@@ -27,10 +27,10 @@ class Controller implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        logic.updateGame();
         logic.setChoice();
         logic.incrementMovesCounter();
         ((JButton) e.getSource()).setText(logic.userSymbol);
-        System.out.println(logic.userSymbol);
     }
     
 }

@@ -2,6 +2,7 @@ public class Logic {
     
     public int movesCounter;
     public String userSymbol;
+    
     View view;
     
     public Logic(View view) {
@@ -17,5 +18,9 @@ public class Logic {
     }
     
     public void incrementMovesCounter() { movesCounter++; }
+    
+    public void updateGame() { 
+        if (movesCounter == 8) view.endGame();
+    }
     
 }

@@ -54,4 +54,15 @@ class View extends JFrame {
         pane.add(panel);
     }
     
+    public void endGame() {
+        tl.setEnabled(false);
+        tc.setEnabled(false);
+        tr.setEnabled(false);
+        ml.setEnabled(false);
+        mc.setEnabled(false);
+        mr.setEnabled(false);
+        bl.setEnabled(false);
+        bc.setEnabled(false);
+        br.setEnabled(false);
+    }
 }
