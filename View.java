@@ -32,8 +32,7 @@ class View extends JFrame {
     }
     
     public void endGame() {
-        for (int i = 0; i < buttons.length; i++) {
+        for (int i = 0; i < buttons.length; i++)
             buttons[i].setEnabled(false);
-        }
     }
 }

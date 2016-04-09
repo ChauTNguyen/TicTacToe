@@ -2,12 +2,14 @@ public class Logic {
     
     public int movesCounter;
     public String userSymbol;
+    boolean gameEnd;
     
     View view;
     
     public Logic(View view) {
         movesCounter = 0;
         this.view = view;
+        gameEnd = false;
     }
     
     public boolean checkBoardForWin() {
@@ -24,8 +26,9 @@ public class Logic {
     
     public void incrementMovesCounter() { movesCounter++; }
     
-    public void updateGame() { 
-        if (movesCounter == 8 || checkBoardForWin() == true) view.endGame();
+    public void updateGameState() { 
+        if (movesCounter == 9 || checkBoardForWin() == true)
+            gameEnd = true;
     }
     
 }

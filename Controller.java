@@ -3,16 +3,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 class Controller implements ActionListener {
-    
+
     View view;
     Logic logic;
-    
+
     public Controller(Logic logic, View view) {
         this.logic = logic;
         this.view = view;
         addActionListeners();
     }
-    
+
     private void addActionListeners() {
         for (int i = 0; i < view.buttons.length; i++)
             view.buttons[i].addActionListener(this);
@@ -20,10 +20,12 @@ class Controller implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        logic.updateGame();
-        logic.setChoice();
-        logic.incrementMovesCounter();
-        ((JButton) e.getSource()).setText(logic.userSymbol);
+        if (logic.gameEnd == false) {
+            logic.setChoice();
+            ((JButton) e.getSource()).setText(logic.userSymbol);
+            logic.incrementMovesCounter();
+        }
     }
     
 }
+
