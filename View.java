@@ -1,4 +1,6 @@
-import java.awt.*;
+import java.awt.GridLayout;
+import java.awt.Container;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -36,94 +38,88 @@ class View extends JFrame {
         pane.add(panel);
     }
     
-    public boolean checkBoardForWin() {
-        int x_sum_first_row, x_sum_second_row, x_sum_third_row,
-            x_sum_first_column, x_sum_second_column, x_sum_third_column,
-            x_sumDiagonalLR, x_sumDiagonalRL;
-        
-        x_sum_first_row = x_sum_second_row = x_sum_third_row
-        = x_sum_first_column = x_sum_second_column = x_sum_third_column
-        = x_sumDiagonalLR = x_sumDiagonalRL = 0;
-        
-        int o_sum_first_row, o_sum_second_row, o_sum_third_row,
-            o_sum_first_column, o_sum_second_column, o_sum_third_column,
-            o_sumDiagonalLR, o_sumDiagonalRL;
-            
-        o_sum_first_row = o_sum_second_row = o_sum_third_row
-        = o_sum_first_column = o_sum_second_column = o_sum_third_column
-        = o_sumDiagonalLR = o_sumDiagonalRL = 0;
-        
-        for (int i = 0; i < 3; i++) {
-            if (buttons[i].getText() == "X")
-                x_sum_first_row++;
-            if (buttons[i].getText() == "O")
-                o_sum_first_row++;
-        }
-        
-        for (int i = 3; i < 6; i++) {
-            if (buttons[i].getText() == "X")
-                x_sum_second_row++;
-            if (buttons[i].getText() == "O")
-                o_sum_second_row++;
-        }
-        
-        for (int i = 6; i < 9; i++) {
-            if (buttons[i].getText() == "X")
-                x_sum_third_row++;
-            if (buttons[i].getText() == "O")
-                o_sum_third_row++;
-        }
-        
-        for (int i = 0; i < 9; i += 3) {
-            if (buttons[i].getText() == "X")
-                x_sum_first_column++;
-            if (buttons[i].getText() == "O")
-                o_sum_first_column++;
-        }
-        
-        for (int i = 1; i < 9; i += 3) {
-            if (buttons[i].getText() == "X")
-                x_sum_second_column++;
-            if (buttons[i].getText() == "O")
-                o_sum_second_column++;
-        }
-        
-        for (int i = 2; i < 9; i += 3) {
-            if (buttons[i].getText() == "X")
-                x_sum_third_column++;
-            if (buttons[i].getText() == "O")
-                o_sum_third_column++;
-        }
-        
-        for (int i = 0; i < 9; i += 4) {
-            if (buttons[i].getText() == "X")
-                x_sumDiagonalLR++;
-            if (buttons[i].getText() == "O")
-                o_sumDiagonalLR++;
-        }
-        
-        for (int i = 2; i < 7; i += 2) {
-            if (buttons[i].getText() == "X")
-                x_sumDiagonalRL++;
-            if (buttons[i].getText() == "O")
-                o_sumDiagonalRL++;
-        }
-        
+    public boolean didSomeoneWin() {
+        int[] scores = evaluateBoard();
         boolean someoneWon = false;
-        
-        if (x_sum_first_row == 3 || x_sum_second_row == 3 || x_sum_third_row == 3 ||
-            x_sum_first_column == 3 || x_sum_second_column == 3 || x_sum_third_column == 3 ||
-            x_sumDiagonalLR == 3 || x_sumDiagonalRL == 3 ||
-            o_sum_first_row == 3 || o_sum_second_row == 3 || o_sum_third_row == 3 ||
-            o_sum_first_column == 3 || o_sum_second_column == 3 || o_sum_third_column == 3 ||
-            o_sumDiagonalLR == 3 || o_sumDiagonalRL == 3)
-            someoneWon = true;
-        
+        for (int i : scores) {
+            if (i == 3 || i == -3)
+                someoneWon = true;
+        }
         return someoneWon;
     }
     
-    public void updateGameState() { 
-        if (model.movesCounter == 9 || checkBoardForWin() == true)
+    public int[] evaluateBoard() {
+        int[] scores = {0,0,0,0,0,0,0,0};
+        
+        // Evaluate first row
+        for (int i = 0; i < 3; i++) {
+            if (buttons[i].getText() == "X")
+                scores[0]++;
+            if (buttons[i].getText() == "O")
+                scores[0]--;
+        }
+        
+        // Evaluate second row
+        for (int i = 3; i < 6; i++) {
+            if (buttons[i].getText() == "X")
+                scores[1]++;
+            if (buttons[i].getText() == "O")
+                scores[1]--;
+        }
+        
+        // Evaluate third row
+        for (int i = 6; i < 9; i++) {
+            if (buttons[i].getText() == "X")
+                scores[2]++;
+            if (buttons[i].getText() == "O")
+                scores[2]--;
+        }
+        
+        // Evaluate first column
+        for (int i = 0; i < 9; i += 3) {
+            if (buttons[i].getText() == "X")
+                scores[3]++;
+            if (buttons[i].getText() == "O")
+                scores[3]--;
+        }
+        
+        // Evaluate second column
+        for (int i = 1; i < 9; i += 3) {
+            if (buttons[i].getText() == "X")
+                scores[4]++;
+            if (buttons[i].getText() == "O")
+                scores[4]--;
+        }
+        
+        // Evaluate third column
+        for (int i = 2; i < 9; i += 3) {
+            if (buttons[i].getText() == "X")
+                scores[5]++;
+            if (buttons[i].getText() == "O")
+                scores[5]--;
+        }
+        
+        // Evaluate left-to-right diagonal
+        for (int i = 0; i < 9; i += 4) {
+            if (buttons[i].getText() == "X")
+                scores[6]++;
+            if (buttons[i].getText() == "O")
+                scores[6]--;
+        }
+        
+        // Evaluate right-to-left diagonal
+        for (int i = 2; i < 7; i += 2) {
+            if (buttons[i].getText() == "X")
+                scores[7]++;
+            if (buttons[i].getText() == "O")
+                scores[7]--;
+        }
+        
+        return scores;
+    }
+    
+    public void updateGameState() {
+        if (model.movesCounter == 9 || didSomeoneWin() == true)
             gameEnd = true;
     }
     
