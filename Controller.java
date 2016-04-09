@@ -5,10 +5,10 @@ import javax.swing.JButton;
 class Controller implements ActionListener {
 
     View view;
-    Logic logic;
-
-    public Controller(Logic logic, View view) {
-        this.logic = logic;
+    Model model;
+    
+    public Controller(Model model, View view) {
+        this.model = model;
         this.view = view;
         addActionListeners();
     }
@@ -20,10 +20,10 @@ class Controller implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (logic.gameEnd == false) {
-            logic.setChoice();
-            ((JButton) e.getSource()).setText(logic.userSymbol);
-            logic.incrementMovesCounter();
+        if (view.gameEnd == false) {
+            model.setChoice();
+            ((JButton) e.getSource()).setText(model.userSymbol);
+            model.incrementMovesCounter();
         }
     }
     
