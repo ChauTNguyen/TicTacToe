@@ -10,6 +10,11 @@ public class Logic {
         this.view = view;
     }
     
+    public boolean checkBoardForWin() {
+        
+        return false;
+    }
+    
     public void setChoice() {
         if (movesCounter % 2 == 0 )
             userSymbol = "X";
@@ -20,7 +25,7 @@ public class Logic {
     public void incrementMovesCounter() { movesCounter++; }
     
     public void updateGame() { 
-        if (movesCounter == 8) view.endGame();
+        if (movesCounter == 8 || checkBoardForWin() == true) view.endGame();
     }
     
 }

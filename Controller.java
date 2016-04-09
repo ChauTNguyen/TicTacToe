@@ -14,15 +14,8 @@ class Controller implements ActionListener {
     }
     
     private void addActionListeners() {
-        view.tl.addActionListener(this);
-        view.tc.addActionListener(this);
-        view.tr.addActionListener(this);
-        view.ml.addActionListener(this);
-        view.mc.addActionListener(this);
-        view.mr.addActionListener(this);
-        view.bl.addActionListener(this);
-        view.bc.addActionListener(this);
-        view.br.addActionListener(this);
+        for (int i = 0; i < view.buttons.length; i++)
+            view.buttons[i].addActionListener(this);
     }
     
     @Override
