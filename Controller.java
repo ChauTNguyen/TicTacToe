@@ -3,9 +3,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 class Controller implements ActionListener {
-    View view;
     
-    public Controller(View view) {
+    View view;
+    Logic logic;
+    
+    public Controller(Logic logic, View view) {
+        this.logic = logic;
         this.view = view;
         addActionListeners();
     }
@@ -24,6 +27,10 @@ class Controller implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        view.tl.setText("O");
+        logic.setChoice();
+        logic.incrementMovesCounter();
+        ((JButton) e.getSource()).setText(logic.userSymbol);
+        System.out.println(logic.userSymbol);
     }
+    
 }

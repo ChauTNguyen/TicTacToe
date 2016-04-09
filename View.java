@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 
 class View extends JFrame {
+    
     GridLayout grid = new GridLayout(3, 3);
     JButton tl, tc, tr, ml, mc, mr, bl, bc, br;
     
@@ -52,4 +53,5 @@ class View extends JFrame {
         
         pane.add(panel);
     }
+    
 }
