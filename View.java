@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 class View extends JFrame {
     
@@ -119,8 +120,10 @@ class View extends JFrame {
     }
     
     public void updateGameState() {
-        if (model.movesCounter == 9 || didSomeoneWin() == true)
+        if (model.movesCounter == 9 || didSomeoneWin() == true) {
             gameEnd = true;
+            JOptionPane.showMessageDialog(null, "Player " + model.userSymbol + " has won!");
+        }
     }
     
     public void endGame() {
