@@ -24,6 +24,7 @@ class Controller implements ActionListener {
             model.setChoice();
             ((JButton) e.getSource()).setText(model.userSymbol);
             model.incrementMovesCounter();
+            ((JButton) e.getSource()).setEnabled(false);
         }
     }
     
