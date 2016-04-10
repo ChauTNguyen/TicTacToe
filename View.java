@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
 class View extends JFrame {
     
@@ -19,8 +18,12 @@ class View extends JFrame {
         addComponentsToPane(getContentPane());
         pack();
         setVisible(true);
+        
         this.model = model;
         gameEnd = false;
+        
+        getRootPane().setDefaultButton(buttons[4]);
+        buttons[4].requestFocus();
     }
 
     public void addComponentsToPane(final Container pane) {
@@ -120,10 +123,8 @@ class View extends JFrame {
     }
     
     public void updateGameState() {
-        if (model.movesCounter == 9 || didSomeoneWin() == true) {
+        if (model.movesCounter == 9 || didSomeoneWin() == true)
             gameEnd = true;
-            JOptionPane.showMessageDialog(null, "Player " + model.userSymbol + " has won!");
-        }
     }
     
     public void endGame() {

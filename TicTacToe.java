@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 public class TicTacToe {
 
     public static void main(String[] args) {
@@ -10,11 +12,11 @@ public class TicTacToe {
             view.updateGameState();
             if (view.gameEnd == true) {
                 view.endGame();
+                JOptionPane.showMessageDialog(null, "Player " + model.userSymbol + " has won!");
                 run = false;
             }
-            System.out.println(view.gameEnd);
             try {
-                Thread.sleep(500);
+                Thread.sleep(250);
             } catch(InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
