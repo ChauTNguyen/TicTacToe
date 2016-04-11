@@ -1,19 +1,29 @@
 public class Model {
     
-    public int movesCounter;
-    public String userSymbol;
+    private int movesCounter;
+    private String userSymbol;
     
     public Model() {
         movesCounter = 0;
     }
     
-    public void setChoice() {
-        if (movesCounter % 2 == 0 )
+    public void setUserSymbol() {
+        if (movesCounter % 2 == 1 ) {
             userSymbol = "X";
-        else
+        } else {
             userSymbol = "O";
+        }
     }
     
-    public void incrementMovesCounter() { movesCounter++; }
+    public String getUserSymbol() {
+        return userSymbol;
+    }
     
+    public void incrementMovesCounter() {
+        movesCounter++;
+    }
+    
+    public int getMovesCounter() {
+        return movesCounter;
+    }
 }

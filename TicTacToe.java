@@ -1,5 +1,3 @@
-import javax.swing.JOptionPane;
-
 public class TicTacToe {
 
     public static void main(String[] args) {
@@ -9,10 +7,9 @@ public class TicTacToe {
 
         boolean run = true;
         while (run) {
-            view.updateGameState();
+            controller.updateGameState();
             if (view.gameEnd == true) {
-                view.endGame();
-                JOptionPane.showMessageDialog(null, "Player " + model.userSymbol + " has won!");
+                view.informWin();
                 run = false;
             }
             try {
