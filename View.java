@@ -8,11 +8,14 @@ import javax.swing.JOptionPane;
 
 class View extends JFrame {
 
-    GridLayout grid = new GridLayout(3, 3);
-    JButton[] buttons;
+    GridLayout grid = new GridLayout(3, 3);     // default grid-size for tic-tac-toe
+    JButton[] buttons;                          // an array of the buttons (9 of them)
     Model model;
-    boolean gameEnd;
+    boolean isGameOver;
 
+    /*
+     * Overloaded constructor.
+     */
     public View(Model model) {
         super("tic-tac-toe");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,12 +24,15 @@ class View extends JFrame {
         setVisible(true);
 
         this.model = model;
-        gameEnd = false;
+        isGameOver = false;
 
         getRootPane().setDefaultButton(buttons[4]);
         buttons[4].requestFocus();
     }
 
+    /*
+     * Add the panel along with its buttons to the pane.
+     */
     public void addComponentsToPane(final Container pane) {
         final JPanel panel = new JPanel();
         panel.setLayout(grid);        
@@ -43,6 +49,11 @@ class View extends JFrame {
         pane.add(panel);
     }
 
+    /*
+     * Check if someone has won the game.
+     * 
+     * @return      a boolean. True if someone has won. Otherwise, false.
+     */
     public boolean didSomeoneWin() {
         int[] scores = evaluateBoard();
         boolean someoneWon = false;
@@ -53,6 +64,11 @@ class View extends JFrame {
         return someoneWon;
     }
 
+    /*
+     * Evaluates the board, stores the values into an array, and returns it.
+     * 
+     * @return      an array containing the score of each button
+     */
     public int[] evaluateBoard() {
         int[] scores = {0,0,0,0,0,0,0,0};
 
@@ -138,8 +154,12 @@ class View extends JFrame {
 
         return scores;
     }
-
-    public void informWin() {
+    
+    /*
+     * Informs the user whether the game is a tie, or if someone won.
+     * If someone won, inform the user exactly which player won.
+     */
+    public void informOutcome() {
         if (didSomeoneWin() == true) {
             for (int i = 0; i < buttons.length; i++) {
                 buttons[i].setEnabled(false);

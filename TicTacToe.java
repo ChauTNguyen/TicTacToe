@@ -8,8 +8,8 @@ public class TicTacToe {
         boolean run = true;
         while (run) {
             controller.updateGameState();
-            if (view.gameEnd == true) {
-                view.informWin();
+            if (view.isGameOver == true) {
+                view.informOutcome();
                 run = false;
             }
             try {
