@@ -13,7 +13,7 @@ class View extends JFrame {
     Model model;
     boolean isGameOver;
 
-    /*
+    /**
      * Overloaded constructor.
      */
     public View(Model model) {
@@ -30,7 +30,7 @@ class View extends JFrame {
         buttons[4].requestFocus();
     }
 
-    /*
+    /**
      * Add the panel along with its buttons to the pane.
      */
     public void addComponentsToPane(final Container pane) {
@@ -49,7 +49,7 @@ class View extends JFrame {
         pane.add(panel);
     }
 
-    /*
+    /**
      * Check if someone has won the game.
      * 
      * @return      a boolean. True if someone has won. Otherwise, false.
@@ -64,7 +64,7 @@ class View extends JFrame {
         return someoneWon;
     }
 
-    /*
+    /**
      * Evaluates the board, stores the values into an array, and returns it.
      * 
      * @return      an array containing the score of each button
@@ -155,7 +155,7 @@ class View extends JFrame {
         return scores;
     }
     
-    /*
+    /**
      * Informs the user whether the game is a tie, or if someone won.
      * If someone won, inform the user exactly which player won.
      */

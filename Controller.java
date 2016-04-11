@@ -7,7 +7,7 @@ class Controller implements ActionListener {
     private View view;
     private Model model;
     
-    /*
+    /**
      * Overloaded constructor. Initializes the model and view, and
      * adds the action listeners to the buttons in view.
      */
@@ -17,7 +17,7 @@ class Controller implements ActionListener {
         addActionListeners();
     }
     
-    /*
+    /**
      * Adds an action listener to every button.
      */
     private void addActionListeners() {
@@ -26,7 +26,7 @@ class Controller implements ActionListener {
         }
     }
    
-    /*
+    /**
      * Increments the number of moves since the start of the game,
      * sets the user symbol, sets the text of the button to that user symbol,
      * and then disables the button.
@@ -41,7 +41,7 @@ class Controller implements ActionListener {
         }
     }
     
-    /*
+    /**
      * Checks if the number of moves is maxed out, or if someone has won the game already.
      */
     public void updateGameState() {
