@@ -31,7 +31,7 @@ class View extends JFrame {
     }
 
     /**
-     * Add the panel along with its buttons to the pane.
+     * Adds the panel along with its buttons to the pane.
      */
     public void addComponentsToPane(final Container pane) {
         final JPanel panel = new JPanel();
@@ -67,7 +67,7 @@ class View extends JFrame {
     /**
      * Evaluates the board, stores the values into an array, and returns it.
      * 
-     * @return      an array containing the score of each button
+     * @return      an array containing the score of each possible win condition.
      */
     public int[] evaluateBoard() {
         int[] scores = {0,0,0,0,0,0,0,0};

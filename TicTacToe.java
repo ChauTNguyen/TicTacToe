@@ -12,6 +12,8 @@ public class TicTacToe {
                 view.informOutcome();
                 run = false;
             }
+            
+            // Slows down the program from running controller.updateGameState() too quickly
             try {
                 Thread.sleep(250);
             } catch(InterruptedException ex) {
