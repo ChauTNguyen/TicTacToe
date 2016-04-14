@@ -1,25 +1,17 @@
 public class TicTacToe {
-
     public static void main(String[] args) {
-        Model model = new Model();
-        View view = new View(model);
-        Controller controller = new Controller(model, view);
+        Game game = new Game();
+        View view = new View();
+        Controller controller = new Controller(game, view);
 
-        boolean run = true;
-        while (run) {
-            controller.updateGameState();
-            if (view.isGameOver == true) {
-                view.informOutcome();
-                run = false;
-            }
-            
-            // Slows down the program from running controller.updateGameState() too quickly
+        while (!game.isGameOver()) {
             try {
                 Thread.sleep(250);
             } catch(InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
         }
-    }
-    
+        
+        controller.informOutcome();
+    }    
 }
