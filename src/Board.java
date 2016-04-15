@@ -1,13 +1,13 @@
 public class Board {
     private Field[][] gameGrid;
-    private static final int BOARD_SIZE = 3;
+    private static final int BOARD_LENGTH = 3; // side length = 3
     
     public Board() {
-        gameGrid = new Field[BOARD_SIZE][BOARD_SIZE];
+        gameGrid = new Field[BOARD_LENGTH][BOARD_LENGTH];
         
         // initializes the board with Symbol.None
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            for (int j = 0; j < BOARD_SIZE; j++) {
+        for (int i = 0; i < BOARD_LENGTH; i++) {
+            for (int j = 0; j < BOARD_LENGTH; j++) {
                 gameGrid[i][j] = Field.getDefault();
             }
         }
@@ -22,7 +22,7 @@ public class Board {
         int[] scores = new int[8];
 
         // evaluate the first row
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < BOARD_LENGTH; i++) {
             if (gameGrid[0][i].getOwner() == Symbol.X) {
                 scores[0]++;
             }
@@ -32,7 +32,7 @@ public class Board {
         }
 
         // evaluate the second row
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < BOARD_LENGTH; i++) {
             if (gameGrid[1][i].getOwner() == Symbol.X) {
                 scores[1]++;
             }
@@ -42,7 +42,7 @@ public class Board {
         }
 
         // evaluate the third row
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < BOARD_LENGTH; i++) {
             if (gameGrid[2][i].getOwner() == Symbol.X) {
                 scores[2]++;
             }
@@ -52,7 +52,7 @@ public class Board {
         }
 
         // evaluate the first column
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < BOARD_LENGTH; i++) {
             if (gameGrid[i][0].getOwner() == Symbol.X) {
                 scores[3]++;
             }
@@ -62,7 +62,7 @@ public class Board {
         }
 
         // evaluate the second column
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < BOARD_LENGTH; i++) {
             if (gameGrid[i][1].getOwner() == Symbol.X) {
                 scores[4]++;
             }
@@ -72,7 +72,7 @@ public class Board {
         }
 
         // evaluate the third column
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < BOARD_LENGTH; i++) {
             if (gameGrid[i][2].getOwner() == Symbol.X) {
                 scores[5]++;
             }
@@ -82,7 +82,7 @@ public class Board {
         }
 
         // evaluate the left-to-right diagonal
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < BOARD_LENGTH; i++) {
             if (gameGrid[i][i].getOwner() == Symbol.X) {
                 scores[6]++;
             }
@@ -92,9 +92,9 @@ public class Board {
         }
 
         // evaluate the right-to-left diagonal
-        for (int i = 0; i < 3; i++) { // rows
-            for (int j = 0; j < 3; j++) { // columns
-                if (i + j == 2) {
+        for (int i = 0; i < BOARD_LENGTH; i++) { // rows
+            for (int j = 0; j < BOARD_LENGTH; j++) { // columns
+                if (i + j == 2) { // right diagonal contain x's and y's that add up to 2
                     if (gameGrid[i][j].getOwner() == Symbol.X) {
                         scores[7]++;
                     }
