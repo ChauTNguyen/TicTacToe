@@ -14,4 +14,4 @@ Refactored code, separated Board/Field into their own classes.:</br>
 http://codereview.stackexchange.com/questions/125721/java-mvc-tictactoe-follow-up</br>
 
 Resulting hierarchy:
-![Alt tag](http://imgur.com/AXSJUkz)
+![screenshot](https://raw.githubusercontent.com/ChauTNguyen/TicTacToe/master/tictactoe_mvc.png)
