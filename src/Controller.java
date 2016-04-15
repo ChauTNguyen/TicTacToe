@@ -45,9 +45,11 @@ class Controller implements ActionListener {
             game.incrementTurnsCounter();
             game.setUserSymbol();
             
-            int index = getMove((JButton) e.getSource());
-            int x = getX(index); // row coordinate
-            int y = getY(index); // column coordinate
+            // The indices of the View JButton array is 0-8 while the indices of the Game Field array is a 2d 3x3 array, so I have to convert the index
+            // into x- and y- coordinates.
+            int indexOfViewButton = getMove((JButton) e.getSource());
+            int x = getX(indexOfViewButton); // row coordinate
+            int y = getY(indexOfViewButton); // column coordinate
             
             game.setFieldOwner(game.getUserSymbol(), x, y);
             
@@ -89,7 +91,7 @@ class Controller implements ActionListener {
         if (6 <= index && index <= 8) {
             return 2;
         }
-        return 0; // just to make sure all return paths work. I did the above because I think it'sm ore readable.
+        return 0; // just to make sure all return paths work. I did the above because I think it's more readable.
     }
     
     /**
@@ -109,7 +111,7 @@ class Controller implements ActionListener {
         if (index == 2 || index == 5 || index == 8) {
             return 2;
         }
-        return 0; // just to make sure all return paths work. I did the above because I think it'sm ore readable.
+        return 0; // just to make sure all return paths work. I did the above because I think it's more readable.
     }
     
     /**
