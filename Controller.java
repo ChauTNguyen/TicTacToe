@@ -44,9 +44,11 @@ class Controller implements ActionListener {
         if (game.isGameOver() == false) {
             game.incrementTurnsCounter();
             game.setUserSymbol();
+            
             int index = getMove((JButton) e.getSource());
             int x = 0; // row coordinate
             int y = 0; // column coordinate
+            
             switch (index) {
                 case 0: x = 0;
                         y = 0;
@@ -77,7 +79,10 @@ class Controller implements ActionListener {
                         break;
                 default: break;
             }
+            
             game.setFieldOwner(game.getUserSymbol(), x, y);
+            
+            // modifies the current display
             ((JButton) e.getSource()).setText((game.getUserSymbol()).toString());
             ((JButton) e.getSource()).setEnabled(false);
         }
@@ -86,7 +91,7 @@ class Controller implements ActionListener {
     /**
      * Returns the index of the current JButton.
      * 
-     * @param       the button that was clicked.
+     * @param button    the button that was clicked.
      */
     public int getMove(JButton button) {
         int index = 0;

@@ -5,6 +5,7 @@ public class Board {
     public Board() {
         gameGrid = new Field[BOARD_SIZE][BOARD_SIZE];
         
+        // initializes the board with Symbol.None
         for (int i = 0; i < BOARD_SIZE; i++) {
             for (int j = 0; j < BOARD_SIZE; j++) {
                 gameGrid[i][j] = Field.getDefault();
