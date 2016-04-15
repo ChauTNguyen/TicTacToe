@@ -24,8 +24,8 @@ public class Game {
     /**
      * Sets the symbol of a specific field.
      * 
-     * @param x     the value for the x coordinate of the Field
-     * @param y     the value for the y coordinate of the Field
+     * @param x     the value for the x-coordinate of the Field
+     * @param y     the value for the y-coordinate of the Field
      */
     public void setFieldOwner(Symbol userSymbol, int x, int y) {
         board.setFieldOwner(userSymbol, x, y);
@@ -35,8 +35,9 @@ public class Game {
      * Returns the owner of a specific field.
      * Note: I used this just for testing.
      * 
-     * @param x     the value for the x coordinate of the Field
-     * @param y     the value for the y coordinate of the Field
+     * @param x     the value for the x-coordinate of the Field
+     * @param y     the value for the y-coordinate of the Field
+     * @return      the owner of the Field as a Symbol
      */
     public Symbol getFieldOwner(int x, int y) {
         return board.getFieldOwner(x, y);
@@ -59,6 +60,8 @@ public class Game {
     /**
      * Evaluates the board to see if the game is over, and then checks if the number of turns is maxed out at 9.
      * If both are not true, return false;
+     * 
+     * @return      returns true is game is over. Returns false if otherwise.
      */
     public boolean isGameOver() {
         int[] scores = board.evaluateBoard();
@@ -86,6 +89,8 @@ public class Game {
     
     /**
      * Returns the number of turns since the start of the game.
+     * 
+     * @return      the number of turns since the start of the game.
      */
     public int getTurnsCounter() {
         return turnsCounter;
@@ -104,13 +109,17 @@ public class Game {
     
     /**
      * Returns the current user symbol.
+     * 
+     * @return      the current user symbol.
      */
     public Symbol getUserSymbol() {
         return userSymbol;
     }
     
     /**
-     * Returns true if someone has won the game. Otherwise, false.
+     * Returns true if a player has won the game. Otherwise, false.
+     * 
+     * @return      true if a player has won the game. Otherwise, return false.
      */
     public boolean getDidSomeoneWin() {
         return didSomeoneWin;

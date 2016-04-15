@@ -111,8 +111,8 @@ public class Board {
     /**
      * Sets the symbol of a specific field.
      * 
-     * @param x     the value for the x coordinate of the Field
-     * @param y     the value for the y coordinate of the Field
+     * @param x     the value for the x-coordinate of the Field
+     * @param y     the value for the y-coordinate of the Field
      */
     public void setFieldOwner(Symbol owner, int x, int y) {
         gameGrid[x][y].setOwner(owner);
@@ -122,8 +122,8 @@ public class Board {
      * Returns the owner of a specific field.
      * Note: I'm using this just for testing.
      * 
-     * @param x     the value for the x coordinate of the Field
-     * @param y     the value for the y coordinate of the Field
+     * @param x     the value for the x-coordinate of the Field
+     * @param y     the value for the y-coordinate of the Field
      */
     public Symbol getFieldOwner(int x, int y) {
         return gameGrid[x][y].getOwner();

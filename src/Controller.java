@@ -46,39 +46,8 @@ class Controller implements ActionListener {
             game.setUserSymbol();
             
             int index = getMove((JButton) e.getSource());
-            int x = 0; // row coordinate
-            int y = 0; // column coordinate
-            
-            switch (index) {
-                case 0: x = 0;
-                        y = 0;
-                        break;
-                case 1: x = 0;
-                        y = 1;
-                        break;
-                case 2: x = 0;
-                        y = 2;
-                        break;
-                case 3: x = 1;
-                        y = 0;
-                        break;
-                case 4: x = 1;;
-                        y = 1;
-                        break;
-                case 5: x = 1;
-                        y = 2;
-                        break;
-                case 6: x = 2;
-                        y = 0;
-                        break;
-                case 7: x = 2;
-                        y = 1;
-                        break;
-                case 8: x = 2;
-                        y = 2;
-                        break;
-                default: break;
-            }
+            int x = getX(index); // row coordinate
+            int y = getY(index); // column coordinate
             
             game.setFieldOwner(game.getUserSymbol(), x, y);
             
@@ -92,8 +61,9 @@ class Controller implements ActionListener {
      * Returns the index of the current JButton.
      * 
      * @param button    the button that was clicked.
+     * @return      the index of the JButton clicked.
      */
-    public int getMove(JButton button) {
+    private int getMove(JButton button) {
         int index = 0;
         for (int i = 0; i < 9; i++) {
             if (button == view.buttons[i]) {
@@ -102,7 +72,46 @@ class Controller implements ActionListener {
         }
         return index;
     }
-
+    
+    /**
+     * Returns the x-coordinate that corresponds to the index.
+     * 
+     * @param index     the index of of the JButton
+     * @return      the x-coordinate that corresponds to the index.
+     */
+    private int getX(int index) {
+        if (0 <= index && index <= 2) {
+            return 0;
+        }
+        if (3 <= index && index <= 5) {
+            return 1;
+        }
+        if (6 <= index && index <= 8) {
+            return 2;
+        }
+        return 0; // just to make sure all return paths work. I did the above because I think it'sm ore readable.
+    }
+    
+    /**
+     * Returns the y-coordinate that corresponds to the index.
+     * 
+     * @param index      the index of the JButton
+     * @return      the y-coordinate that corresponds to the index.
+     * 
+     */
+    public int getY(int index) {
+        if (index == 0 || index == 3 || index == 6) {
+            return 0;
+        }
+        if (index == 1 || index == 4 || index == 7) {
+            return 1;
+        }
+        if (index == 2 || index == 5 || index == 8) {
+            return 2;
+        }
+        return 0; // just to make sure all return paths work. I did the above because I think it'sm ore readable.
+    }
+    
     /**
      * Informs the user of the outcome of the game depending on if someone won or not.
      */
