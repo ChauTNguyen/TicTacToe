@@ -9,6 +9,9 @@ class Controller implements ActionListener {
     /**
      * Overloaded constructor. Initializes the game and view, and
      * adds the action listeners to the buttons in view.
+     * 
+     * @param   an instance of the Game class.
+     * @param   an instance of the View class.
      */
     public Controller(Game game, View view) {
         this.game = game;
@@ -33,6 +36,8 @@ class Controller implements ActionListener {
      * button[5] would be Field[1][2].
      * 
      * It then sets the owner of the field in the Game object, and modifies the View buttons.
+     * 
+     * @param e     the action performed. In this game, it would be a mouse click.
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -80,6 +85,8 @@ class Controller implements ActionListener {
     
     /**
      * Returns the index of the current JButton.
+     * 
+     * @param       the button that was clicked.
      */
     public int getMove(JButton button) {
         int index = 0;
@@ -96,16 +103,8 @@ class Controller implements ActionListener {
      */
     public void informOutcome() {
         if (game.getDidSomeoneWin()) {
-            System.out.println(game.getDidSomeoneWin());
-            System.out.println("Informing win.");
             view.informWin(game.getUserSymbol());
         } else {
-            System.out.println("Informing tie.");
-            game.printField();
-            int[] scores = game.evaluateBoard();
-            for (int score : scores) {
-                System.out.print(score + " " );
-            }
             view.informTie();
         }
     }
