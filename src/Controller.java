@@ -99,7 +99,6 @@ class Controller implements ActionListener {
      * 
      * @param index      the index of the JButton
      * @return      the y-coordinate that corresponds to the index.
-     * 
      */
     private int getY(int index) {
         if (index == 0 || index == 3 || index == 6) {
