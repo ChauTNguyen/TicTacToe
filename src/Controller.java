@@ -101,7 +101,7 @@ class Controller implements ActionListener {
      * @return      the y-coordinate that corresponds to the index.
      * 
      */
-    public int getY(int index) {
+    private int getY(int index) {
         if (index == 0 || index == 3 || index == 6) {
             return 0;
         }
