@@ -13,9 +13,9 @@ class Controller implements ActionListener {
      * @param   an instance of the Game class.
      * @param   an instance of the View class.
      */
-    public Controller(Game game, View view) {
-        this.game = game;
-        this.view = view;
+    public Controller() {
+        this.game = new Game();
+        this.view = new View();
         addActionListeners();
     }
 
@@ -122,6 +122,15 @@ class Controller implements ActionListener {
         } else {
             view.informTie();
         }
+    }
+    
+    /**
+     * Calls the isGameOver function in the Game class.
+     * 
+     * @return      returns true if game is over. Returns false if otherwise.
+     */
+    public boolean isGameOver() {
+        return game.isGameOver();
     }
 }
 
