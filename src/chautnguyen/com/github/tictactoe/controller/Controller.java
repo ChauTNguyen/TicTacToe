@@ -6,6 +6,10 @@ import chautnguyen.com.github.tictactoe.view.View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import java.awt.Image;
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import javax.swing.ImageIcon;
 
 public class Controller implements ActionListener {
     private Game game;
@@ -49,21 +53,35 @@ public class Controller implements ActionListener {
         if (game.isGameOver() == false) {
             game.incrementTurnsCounter();
             game.setUserSymbol();
-            
+
             // The indices of the View JButton array is 0-8 while the indices of the Game Field array is a 2d 3x3 array, so I have to convert the index
             // into x- and y- coordinates.
             int indexOfViewButton = getMove((JButton) e.getSource());
             int x = getX(indexOfViewButton); // row coordinate
             int y = getY(indexOfViewButton); // column coordinate
-            
+
             game.setFieldOwner(game.getUserSymbol(), x, y);
-            
+
             // modifies the current display
-            ((JButton) e.getSource()).setText((game.getUserSymbol()).toString());
+            if (game.getUserSymbol().toString() == "X") {
+                try {
+                    Image icon = ImageIO.read(View.class.getResource("icons/X.png"));
+                    ((JButton) e.getSource()).setIcon(new ImageIcon(icon));
+                } catch (IOException ex) {
+                    System.out.println("icons/X.png not found.");
+                }
+            } else { // if (game.getUserSymbol().toString() == "O") {
+                try {
+                    Image icon = ImageIO.read(View.class.getResource("icons/O.png"));
+                    ((JButton) e.getSource()).setIcon(new ImageIcon(icon));
+                } catch (IOException ex) {
+                    System.out.println("icons/O.png not found.");
+                }
+            }
             ((JButton) e.getSource()).setEnabled(false);
         }
     }
-    
+
     /**
      * Returns the index of the current JButton.
      * 
@@ -79,7 +97,7 @@ public class Controller implements ActionListener {
         }
         return index;
     }
-    
+
     /**
      * Returns the x-coordinate that corresponds to the index.
      * 
@@ -98,7 +116,7 @@ public class Controller implements ActionListener {
         }
         return 0; // just to make sure all return paths work. I did the above because I think it's more readable.
     }
-    
+
     /**
      * Returns the y-coordinate that corresponds to the index.
      * 
@@ -117,7 +135,7 @@ public class Controller implements ActionListener {
         }
         return 0; // just to make sure all return paths work. I did the above because I think it's more readable.
     }
-    
+
     /**
      * Informs the user of the outcome of the game depending on if someone won or not.
      */
@@ -128,7 +146,7 @@ public class Controller implements ActionListener {
             view.informTie();
         }
     }
-    
+
     /**
      * Calls the isGameOver function in the Game class.
      * 

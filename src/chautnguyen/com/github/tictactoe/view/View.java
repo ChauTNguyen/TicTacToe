@@ -1,7 +1,6 @@
 package chautnguyen.com.github.tictactoe.view;
 
 import chautnguyen.com.github.tictactoe.model.Field.Symbol;
-
 import java.awt.GridLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -46,7 +45,7 @@ public class View extends JFrame {
 
         pane.add(panel);
     }
-
+    
     /**
      * Informs the user who won.
      */
