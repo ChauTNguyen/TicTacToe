@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 public class View extends JFrame {
     GridLayout grid = new GridLayout(3, 3);     // default grid-size for tic-tac-toe
-    private JButton[] buttons;                   // an array of the buttons (9 of them)    
+    private JButton[] buttons;                  // an array containing the 9 buttons
 
     /**
      * Overloaded constructor.
