@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class Controller implements ActionListener {
     private Game game;
     private View view;
-
+    
     /**
      * Overloaded constructor. Initializes the game and view, and
      * adds the action listeners to the buttons in view.
@@ -32,8 +32,8 @@ public class Controller implements ActionListener {
      * Adds an action listener to every button.
      */
     private void addActionListeners() {
-        for (int i = 0; i < view.buttons.length; i++) {
-            view.buttons[i].addActionListener(this);
+        for (int i = 0; i < view.getNumberOfButtons(); i++) {
+            view.getButton(i).addActionListener(this);
         }
     }
 
@@ -91,7 +91,7 @@ public class Controller implements ActionListener {
     private int getMove(JButton button) {
         int index = 0;
         for (int i = 0; i < 9; i++) {
-            if (button == view.buttons[i]) {
+            if (button == view.getButton(i)) {
                 index = i;
             }
         }
