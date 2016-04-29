@@ -8,10 +8,11 @@ import chautnguyen.com.github.tictactoe.model.Field.Symbol;
  */
 public class Game {
     private Board board;
+    
     private int turnsCounter; // the number of turns since the start of the game
     private Symbol userSymbol; // the current Symbol of the player
     private boolean didSomeoneWin; // to check if a player won or if it was a tie
-
+    
     /**
      * Default constructor.
      * 

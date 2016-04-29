@@ -91,7 +91,7 @@ public class Board {
             if (gameGrid[i][i].getOwner() == Symbol.X) {
                 scores[6]++;
             }
-            if (gameGrid[i][i].getOwner() == Symbol.values()[1]) {
+            if (gameGrid[i][i].getOwner() == Symbol.O) {
                 scores[6]--;
             }
         }
@@ -125,12 +125,24 @@ public class Board {
 
     /**
      * Returns the owner of a specific field.
-     * Note: I'm using this just for testing.
      * 
      * @param x     the value for the x-coordinate of the Field
      * @param y     the value for the y-coordinate of the Field
      */
     public Symbol getFieldOwner(int x, int y) {
         return gameGrid[x][y].getOwner();
+    }
+    
+    /**
+     * Prints the field.
+     * Note: I'm using this just for testing.
+     */
+    public void printField() {
+        for (int i = 0; i < BOARD_LENGTH; i++) {
+            for (int j = 0; j < BOARD_LENGTH; j++) {
+                System.out.print(gameGrid[i][j].getOwner() + " ");
+            }
+            System.out.println();
+        }
     }
 }
