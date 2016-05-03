@@ -5,11 +5,8 @@ import chautnguyen.com.github.tictactoe.view.View;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
-import java.awt.Image;
-import javax.imageio.ImageIO;
-import java.io.IOException;
-import javax.swing.ImageIcon;
 
 public class Controller implements ActionListener {
     private Game game;
@@ -61,24 +58,7 @@ public class Controller implements ActionListener {
             int y = getY(indexOfViewButton); // column coordinate
 
             game.setFieldOwner(game.getUserSymbol(), x, y);
-
-            // modifies the current display
-            if (game.getUserSymbol().toString() == "X") {
-                try {
-                    Image icon = ImageIO.read(View.class.getResource("icons/X.png"));
-                    ((JButton) e.getSource()).setIcon(new ImageIcon(icon));
-                } catch (IOException ex) {
-                    System.out.println("icons/X.png not found.");
-                }
-            } else { // if (game.getUserSymbol().toString() == "O") {
-                try {
-                    Image icon = ImageIO.read(View.class.getResource("icons/O.png"));
-                    ((JButton) e.getSource()).setIcon(new ImageIcon(icon));
-                } catch (IOException ex) {
-                    System.out.println("icons/O.png not found.");
-                }
-            }            
-            ((JButton) e.getSource()).setEnabled(false);
+            view.setFieldOwner(game.getUserSymbol(), (JButton) e.getSource());            
         }
     }
 

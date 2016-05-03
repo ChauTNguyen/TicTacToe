@@ -1,15 +1,21 @@
 package chautnguyen.com.github.tictactoe.view;
 
 import chautnguyen.com.github.tictactoe.model.Field.Symbol;
-import java.awt.GridLayout;
+
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-public class View extends JFrame {
+public class View extends JFrame implements GenericView {
     GridLayout grid = new GridLayout(3, 3);     // default grid-size for tic-tac-toe
     private JButton[] buttons;                  // an array containing the 9 buttons
 
@@ -45,24 +51,54 @@ public class View extends JFrame {
 
         pane.add(panel);
     }
-    
+
+    @Override
+    /**
+     * Changes a field to a user symbol.
+     * 
+     * @param symbol    the symbol of the current player.
+     * @param button    the button that was clicked.
+     */
+    public void setFieldOwner(Symbol userSymbol, JButton button) {
+        if (userSymbol.toString() == "X") {
+            try {
+                Image icon = ImageIO.read(View.class.getResource("icons/X.png"));
+                button.setIcon(new ImageIcon(icon));
+            } catch (IOException ex) {
+                System.out.println("icons/X.png not found.");
+            }
+        } else {
+            try {
+                Image icon = ImageIO.read(View.class.getResource("icons/O.png"));
+                button.setIcon(new ImageIcon(icon));
+            } catch (IOException ex) {
+                System.out.println("icons/O.png not found.");
+            }
+        }
+        button.setEnabled(false);
+    }
+
     /**
      * Informs the user who won.
+     * 
+     * @param symbol    the symbol of the current player (=> winner).
      */
+    @Override
     public void informWin(Symbol userSymbol) {
         for (int i = 0; i < buttons.length; i++) {
             buttons[i].setEnabled(false);
         }
         JOptionPane.showMessageDialog(null, "Player " + userSymbol.toString() + " has won!");
     }
-    
+
     /**
      * Informs the user of the tie.
      */
+    @Override
     public void informTie() {
         JOptionPane.showMessageDialog(null, "Tie!");
     }
-    
+
     /**
      * Returns a button with a specific index.
      * 
@@ -71,7 +107,7 @@ public class View extends JFrame {
     public JButton getButton(int index) {
         return buttons[index];
     }
-    
+
     /**
      * Returns the size of the buttons[] array.
      * 
