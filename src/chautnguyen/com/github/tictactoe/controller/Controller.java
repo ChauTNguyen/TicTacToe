@@ -102,7 +102,7 @@ public class Controller implements ActionListener {
      * Returns the x-coordinate that corresponds to the index.
      * 
      * @param index     the index of of the JButton
-     * @return      the x-coordinate of the 2d array that corresponds to the [0-9] index.
+     * @return      the x-coordinate of the 2d array that corresponds to the [0-8] index.
      */
     private int getX(int index) {
         if (0 <= index && index <= 2) {
