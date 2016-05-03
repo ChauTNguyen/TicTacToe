@@ -56,7 +56,7 @@ public class Controller implements ActionListener {
 
             // The indices of the View JButton array is 0-8 while the indices of the Game Field array is a 2d 3x3 array, so I have to convert the index
             // into x- and y- coordinates.
-            int indexOfViewButton = getMove((JButton) e.getSource());
+            int indexOfViewButton = getJButtonIndex((JButton) e.getSource());
             int x = getX(indexOfViewButton); // row coordinate
             int y = getY(indexOfViewButton); // column coordinate
 
@@ -86,9 +86,9 @@ public class Controller implements ActionListener {
      * Returns the index of the current JButton.
      * 
      * @param button    the button that was clicked.
-     * @return      the index of the JButton clicked.
+     * @return      the [0-8] index of the JButton clicked.
      */
-    private int getMove(JButton button) {
+    private int getJButtonIndex(JButton button) {
         int buttonIndex = 0;
         for (int i = 0; i < 9; i++) {
             if (button == view.getButton(i)) {
@@ -102,7 +102,7 @@ public class Controller implements ActionListener {
      * Returns the x-coordinate that corresponds to the index.
      * 
      * @param index     the index of of the JButton
-     * @return      the x-coordinate that corresponds to the index.
+     * @return      the x-coordinate of the 2d array that corresponds to the [0-9] index.
      */
     private int getX(int index) {
         if (0 <= index && index <= 2) {
@@ -121,7 +121,7 @@ public class Controller implements ActionListener {
      * Returns the y-coordinate that corresponds to the index.
      * 
      * @param index      the index of the JButton
-     * @return      the y-coordinate that corresponds to the index.
+     * @return      the y-coordinate of the 2d array that corresponds to the [0-8] index.
      */
     private int getY(int index) {
         if (index == 0 || index == 3 || index == 6) {
