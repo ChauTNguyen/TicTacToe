@@ -94,7 +94,8 @@ public class Controller implements ActionListener {
         if (6 <= index && index <= 8) {
             return 2;
         }
-        return 0; // just to make sure all return paths work. I did the above because I think it's more readable.
+        return -1; // just to make sure all return paths work.
+        // I did the above because I think it's more readable than its alternatives.
     }
 
     /**
@@ -113,11 +114,12 @@ public class Controller implements ActionListener {
         if (index == 2 || index == 5 || index == 8) {
             return 2;
         }
-        return 0; // just to make sure all return paths work. I did the above because I think it's more readable.
+        return -1; // just to make sure all return paths work.
+        // I did the above because I think it's more readable than its alternatives.
     }
 
     /**
-     * Informs the user of the outcome of the game depending on if someone won or not.
+     * Informs the user of the outcome of the game.
      */
     public void informOutcome() {
         if (game.getDidSomeoneWin()) {

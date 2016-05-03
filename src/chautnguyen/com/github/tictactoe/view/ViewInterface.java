@@ -4,7 +4,7 @@ import chautnguyen.com.github.tictactoe.model.Field.Symbol;
 
 import javax.swing.JButton;
 
-interface GenericView
+interface ViewInterface
 {
     /**
      * Changes a field to a user symbol.

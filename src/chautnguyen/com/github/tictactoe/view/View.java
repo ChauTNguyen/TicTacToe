@@ -15,8 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-public class View extends JFrame implements GenericView {
-    GridLayout grid = new GridLayout(3, 3);     // default grid-size for tic-tac-toe
+public class View extends JFrame implements ViewInterface {
+    private GridLayout grid = new GridLayout(3, 3);     // default grid-size for tic-tac-toe
     private JButton[] buttons;                  // an array containing the 9 buttons
 
     /**
