@@ -77,7 +77,7 @@ public class Controller implements ActionListener {
                 } catch (IOException ex) {
                     System.out.println("icons/O.png not found.");
                 }
-            }
+            }            
             ((JButton) e.getSource()).setEnabled(false);
         }
     }
@@ -89,13 +89,13 @@ public class Controller implements ActionListener {
      * @return      the index of the JButton clicked.
      */
     private int getMove(JButton button) {
-        int index = 0;
+        int buttonIndex = 0;
         for (int i = 0; i < 9; i++) {
             if (button == view.getButton(i)) {
-                index = i;
+                buttonIndex = i;
             }
         }
-        return index;
+        return buttonIndex;
     }
 
     /**
@@ -156,4 +156,3 @@ public class Controller implements ActionListener {
         return game.isGameOver();
     }
 }
-

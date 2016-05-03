@@ -107,9 +107,9 @@ public class Game {
      */
     public void setUserSymbol() {
         if (turnsCounter % 2 == 1) {
-            userSymbol = Symbol.values()[0];
+            userSymbol = Symbol.X;
         } else {
-            userSymbol = Symbol.values()[1];
+            userSymbol = Symbol.O;
         }
     }
     
