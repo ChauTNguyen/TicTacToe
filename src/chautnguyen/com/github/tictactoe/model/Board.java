@@ -5,14 +5,14 @@ import chautnguyen.com.github.tictactoe.model.Field.Symbol;
 
 public class Board {
     private Field[][] gameGrid;
-    private static final int BOARD_LENGTH = 3; // side length = 3
+    private static final int BOARD_SIDE_LENGTH = 3;
     
     public Board() {
-        gameGrid = new Field[BOARD_LENGTH][BOARD_LENGTH];
+        gameGrid = new Field[BOARD_SIDE_LENGTH][BOARD_SIDE_LENGTH];
         
         // initializes the board with Symbol.None
-        for (int i = 0; i < BOARD_LENGTH; i++) {
-            for (int j = 0; j < BOARD_LENGTH; j++) {
+        for (int i = 0; i < BOARD_SIDE_LENGTH; i++) {
+            for (int j = 0; j < BOARD_SIDE_LENGTH; j++) {
                 gameGrid[i][j] = Field.getDefault();
             }
         }
@@ -27,7 +27,7 @@ public class Board {
         int[] scores = new int[8];
 
         // evaluate the first row
-        for (int i = 0; i < BOARD_LENGTH; i++) {
+        for (int i = 0; i < BOARD_SIDE_LENGTH; i++) {
             if (gameGrid[0][i].getOwner() == Symbol.X) {
                 scores[0]++;
             }
@@ -37,7 +37,7 @@ public class Board {
         }
 
         // evaluate the second row
-        for (int i = 0; i < BOARD_LENGTH; i++) {
+        for (int i = 0; i < BOARD_SIDE_LENGTH; i++) {
             if (gameGrid[1][i].getOwner() == Symbol.X) {
                 scores[1]++;
             }
@@ -47,7 +47,7 @@ public class Board {
         }
 
         // evaluate the third row
-        for (int i = 0; i < BOARD_LENGTH; i++) {
+        for (int i = 0; i < BOARD_SIDE_LENGTH; i++) {
             if (gameGrid[2][i].getOwner() == Symbol.X) {
                 scores[2]++;
             }
@@ -57,7 +57,7 @@ public class Board {
         }
 
         // evaluate the first column
-        for (int i = 0; i < BOARD_LENGTH; i++) {
+        for (int i = 0; i < BOARD_SIDE_LENGTH; i++) {
             if (gameGrid[i][0].getOwner() == Symbol.X) {
                 scores[3]++;
             }
@@ -67,7 +67,7 @@ public class Board {
         }
 
         // evaluate the second column
-        for (int i = 0; i < BOARD_LENGTH; i++) {
+        for (int i = 0; i < BOARD_SIDE_LENGTH; i++) {
             if (gameGrid[i][1].getOwner() == Symbol.X) {
                 scores[4]++;
             }
@@ -77,7 +77,7 @@ public class Board {
         }
 
         // evaluate the third column
-        for (int i = 0; i < BOARD_LENGTH; i++) {
+        for (int i = 0; i < BOARD_SIDE_LENGTH; i++) {
             if (gameGrid[i][2].getOwner() == Symbol.X) {
                 scores[5]++;
             }
@@ -87,7 +87,7 @@ public class Board {
         }
 
         // evaluate the left-to-right diagonal
-        for (int i = 0; i < BOARD_LENGTH; i++) {
+        for (int i = 0; i < BOARD_SIDE_LENGTH; i++) {
             if (gameGrid[i][i].getOwner() == Symbol.X) {
                 scores[6]++;
             }
@@ -97,8 +97,8 @@ public class Board {
         }
 
         // evaluate the right-to-left diagonal
-        for (int i = 0; i < BOARD_LENGTH; i++) { // rows
-            for (int j = 0; j < BOARD_LENGTH; j++) { // columns
+        for (int i = 0; i < BOARD_SIDE_LENGTH; i++) { // rows
+            for (int j = 0; j < BOARD_SIDE_LENGTH; j++) { // columns
                 if (i + j == 2) { // right diagonal contain x's and y's that add up to 2
                     if (gameGrid[i][j].getOwner() == Symbol.X) {
                         scores[7]++;
@@ -138,8 +138,8 @@ public class Board {
      * Note: I'm using this just for testing.
      */
     public void printField() {
-        for (int i = 0; i < BOARD_LENGTH; i++) {
-            for (int j = 0; j < BOARD_LENGTH; j++) {
+        for (int i = 0; i < BOARD_SIDE_LENGTH; i++) {
+            for (int j = 0; j < BOARD_SIDE_LENGTH; j++) {
                 System.out.print(gameGrid[i][j].getOwner() + " ");
             }
             System.out.println();
