@@ -64,7 +64,8 @@ public class Game {
     }
     
     /**
-     * Evaluates the board to see if the game is over, and then checks if the number of turns is maxed out at 9.
+     * Evaluates the board to see if the game is over,
+     * and then checks if the number of turns is maxed out at 9.
      * If both are not true, return false;
      * 
      * @return      returns true is game is over. Returns false if otherwise.
@@ -82,8 +83,8 @@ public class Game {
         if (turnsCounter == 9) {
             return true;
         }
-        
-        return false; // if both of the above conditions don't apply, game is not over
+        // if both of the above conditions don't apply, game is not over
+        return false;
     }
     
     /**

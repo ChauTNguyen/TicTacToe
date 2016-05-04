@@ -51,7 +51,9 @@ public class Controller implements ActionListener {
             game.incrementTurnsCounter();
             game.setUserSymbol();
 
-            // The indices of the View JButton array is 0-8 while the indices of the Game Field array is a 2d 3x3 array, so I have to convert the index
+            // The indices of the View JButton array is 0-8 while the
+            // indices of the Game Field array
+            // is a 2d 3x3 array, so I have to convert the index
             // into x- and y- coordinates.
             int indexOfViewButton = getJButtonIndex((JButton) e.getSource());
             int x = getX(indexOfViewButton); // row coordinate
