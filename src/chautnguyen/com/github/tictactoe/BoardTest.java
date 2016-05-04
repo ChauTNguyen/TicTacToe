@@ -8,8 +8,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Random;
-
 /**
  * The test class BoardTest.
  * Tests many win conditions of the game.
