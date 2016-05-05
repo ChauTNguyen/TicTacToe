@@ -2,6 +2,7 @@ package chautnguyen.com.github.tictactoe.controller;
 
 import chautnguyen.com.github.tictactoe.model.Game;
 import chautnguyen.com.github.tictactoe.view.View;
+import chautnguyen.com.github.tictactoe.view.ViewInterface;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +11,7 @@ import javax.swing.JButton;
 
 public class Controller implements ActionListener {
     private Game game;
-    private View view;
+    private ViewInterface view;
     
     /**
      * Overloaded constructor. Initializes the game and view, and
@@ -29,8 +30,8 @@ public class Controller implements ActionListener {
      * Adds an action listener to every button.
      */
     private void addActionListeners() {
-        for (int i = 0; i < view.getNumberOfButtons(); i++) {
-            view.getButton(i).addActionListener(this);
+        for (int i = 0; i < ((View)view).getNumberOfButtons(); i++) {
+            ((View)view).getButton(i).addActionListener(this);
         }
     }
 
@@ -73,7 +74,7 @@ public class Controller implements ActionListener {
     private int getJButtonIndex(JButton button) {
         int buttonIndex = 0;
         for (int i = 0; i < 9; i++) {
-            if (button == view.getButton(i)) {
+            if (button == ((View)view).getButton(i)) {
                 buttonIndex = i;
             }
         }
