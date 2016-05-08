@@ -131,4 +131,12 @@ public class Game {
     public boolean getDidSomeoneWin() {
         return didSomeoneWin;
     }
+
+    /*
+     * Increments the number of turns, and then sets the user symbol.
+     */
+    public void incTurnCounterAndSetUserSymbol() {
+        incrementTurnsCounter();
+        setUserSymbol();
+    }
 }

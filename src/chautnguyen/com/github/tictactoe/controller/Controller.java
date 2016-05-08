@@ -48,19 +48,18 @@ public class Controller implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (game.isGameOver() == false) {
-            game.incrementTurnsCounter();
-            game.setUserSymbol();
+        if (!game.isGameOver()) {
+            game.incTurnCounterAndSetUserSymbol();
 
             // The indices of the View JButton array is 0-8 while the
             // indices of the Game Field array
             // is a 2d 3x3 array, so I have to convert the index
             // into x- and y- coordinates.
             int indexOfViewButton = getJButtonIndex((JButton) e.getSource());
-            int x = getX(indexOfViewButton); // row coordinate
-            int y = getY(indexOfViewButton); // column coordinate
 
-            game.setFieldOwner(game.getUserSymbol(), x, y);
+            game.setFieldOwner(game.getUserSymbol(),
+                               getX(indexOfViewButton),  // row coordinate of 2d array
+                               getY(indexOfViewButton)); // col coordinate of 2d array
             view.setFieldOwner(game.getUserSymbol(), (JButton) e.getSource());            
         }
     }
