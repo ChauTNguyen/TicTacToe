@@ -1,6 +1,5 @@
 package chautnguyen.com.github.tictactoe.model;
 
-import chautnguyen.com.github.tictactoe.model.Field;
 import chautnguyen.com.github.tictactoe.model.Field.Symbol;
 
 public class Board {
