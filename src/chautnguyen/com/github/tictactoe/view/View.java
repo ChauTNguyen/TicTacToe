@@ -10,18 +10,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class View extends JFrame implements ViewInterface {
     private GridLayout grid = new GridLayout(3, 3);     // default grid-size for tic-tac-toe
     private JButton[] buttons;                  // an array containing the 9 buttons
 
-    /**
-     * Overloaded constructor.
-     */
     public View() {
         super("tic-tac-toe");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,7 +39,6 @@ public class View extends JFrame implements ViewInterface {
         panel.setPreferredSize(new Dimension(300, 300));
 
         buttons = new JButton[9];
-
         for (int i = 0; i < buttons.length; i++) {
             buttons[i] = new JButton();
             buttons[i].getPreferredSize();
