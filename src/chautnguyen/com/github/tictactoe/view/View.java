@@ -16,11 +16,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class View extends JFrame implements ViewInterface {
-    private GridLayout grid = new GridLayout(3, 3);     // default grid-size for tic-tac-toe
-    private JButton[] buttons;                  // an array containing the 9 buttons
+    private final GridLayout grid;     // default grid-size for tic-tac-toe
+    private final JButton[] buttons;   // an array containing the 9 buttons
 
     public View() {
         super("tic-tac-toe");
+        grid = new GridLayout(3, 3);
+        buttons = new JButton[9];
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addComponentsToPane(getContentPane());
         pack();
@@ -38,7 +41,6 @@ public class View extends JFrame implements ViewInterface {
         panel.setLayout(grid);        
         panel.setPreferredSize(new Dimension(300, 300));
 
-        buttons = new JButton[9];
         for (int i = 0; i < buttons.length; i++) {
             buttons[i] = new JButton();
             buttons[i].getPreferredSize();
