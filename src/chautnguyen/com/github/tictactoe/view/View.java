@@ -57,7 +57,7 @@ public class View extends JFrame implements ViewInterface {
      * @param symbol    the symbol of the current player.
      * @param button    the button that was clicked.
      */
-    public void setFieldOwner(Symbol userSymbol, JButton button) {
+    public void updateBoard(Symbol userSymbol, JButton button) {
         if (userSymbol.toString() == "X") {
             try {
                 Image icon = ImageIO.read(View.class.getResource("icons/X.png"));
@@ -83,9 +83,10 @@ public class View extends JFrame implements ViewInterface {
      */
     @Override
     public void informWin(Symbol userSymbol) {
-        for (int i = 0; i < buttons.length; i++) {
-            buttons[i].setEnabled(false);
+        for (JButton button : buttons) {
+            button.setEnabled(false);
         }
+
         JOptionPane.showMessageDialog(null, "Player " + userSymbol.toString() + " has won!");
     }
 

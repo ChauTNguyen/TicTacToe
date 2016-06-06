@@ -12,7 +12,7 @@ public interface ViewInterface
      * @param symbol    the symbol of the current player.
      * @param button    the button that was clicked.
      */
-    public void setFieldOwner(Symbol owner, JButton button);
+    public void updateBoard(Symbol owner, JButton button);
     
     /**
      * Informs the user who won.

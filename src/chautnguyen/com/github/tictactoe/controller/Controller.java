@@ -60,7 +60,7 @@ public class Controller implements ActionListener {
             game.setFieldOwner(game.getUserSymbol(),
                                getX(indexOfViewButton),  // row coordinate of 2d array
                                getY(indexOfViewButton)); // col coordinate of 2d array
-            view.setFieldOwner(game.getUserSymbol(), (JButton) e.getSource());            
+            view.updateBoard(game.getUserSymbol(), (JButton) e.getSource());
         }
     }
 
@@ -87,17 +87,15 @@ public class Controller implements ActionListener {
      * @return      the x-coordinate of the 2d array that corresponds to the [0-8] index.
      */
     private int getX(int index) {
-        if (0 <= index && index <= 2) {
-            return 0;
+        switch (index) {
+            case 0:
+            case 1:
+            case 2: return 0;
+            case 3:
+            case 4:
+            case 5: return 1;
         }
-        if (3 <= index && index <= 5) {
-            return 1;
-        }
-        if (6 <= index && index <= 8) {
-            return 2;
-        }
-        return -1; // just to make sure all return paths work.
-        // I did the above because I think it's more readable than its alternatives.
+        return 2;
     }
 
     /**
@@ -107,17 +105,15 @@ public class Controller implements ActionListener {
      * @return      the y-coordinate of the 2d array that corresponds to the [0-8] index.
      */
     private int getY(int index) {
-        if (index == 0 || index == 3 || index == 6) {
-            return 0;
+        switch (index) {
+            case 0:
+            case 3:
+            case 6: return 0;
+            case 1:
+            case 4:
+            case 7: return 1;
         }
-        if (index == 1 || index == 4 || index == 7) {
-            return 1;
-        }
-        if (index == 2 || index == 5 || index == 8) {
-            return 2;
-        }
-        return -1; // just to make sure all return paths work.
-        // I did the above because I think it's more readable than its alternatives.
+        return 2;
     }
 
     /**

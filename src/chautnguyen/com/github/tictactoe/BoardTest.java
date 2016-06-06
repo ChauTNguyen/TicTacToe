@@ -48,7 +48,7 @@ public class BoardTest
     @Test
     public void newBoard() {
         Board board = new Board();
-        // board.setFieldOwner(Symbol.X, 1, 2); => FAILS :)
+        // board.updateBoard(Symbol.X, 1, 2); => FAILS :)
         int[] scores = board.evaluateBoard();
 
         for (int score : scores) {
