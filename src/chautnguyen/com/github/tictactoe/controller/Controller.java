@@ -1,6 +1,7 @@
 package chautnguyen.com.github.tictactoe.controller;
 
 import chautnguyen.com.github.tictactoe.model.Game;
+import chautnguyen.com.github.tictactoe.utils.Pair;
 import chautnguyen.com.github.tictactoe.view.View;
 import chautnguyen.com.github.tictactoe.view.ViewInterface;
 
@@ -57,9 +58,11 @@ public class Controller implements ActionListener {
             // into x- and y- coordinates.
             int indexOfViewButton = getJButtonIndex((JButton) e.getSource());
 
+            Pair pair = getPair(indexOfViewButton);
             game.setFieldOwner(game.getUserSymbol(),
-                               getX(indexOfViewButton),  // row coordinate of 2d array
-                               getY(indexOfViewButton)); // col coordinate of 2d array
+                               pair.first,
+                               pair.second);
+
             view.updateBoard(game.getUserSymbol(), (JButton) e.getSource());
         }
     }
@@ -81,39 +84,27 @@ public class Controller implements ActionListener {
     }
 
     /**
-     * Returns the x-coordinate that corresponds to the index.
-     * 
-     * @param index     the index of of the JButton
-     * @return      the x-coordinate of the 2d array that corresponds to the [0-8] index.
+     * Returns a pair containing the x and y coordinates corresponding to the View buttons array [0-8 index].
+     *
+     * @param index     index of the view button.
+     * @return          a pair containing the x and y coordinates.
      */
-    private int getX(int index) {
-        switch (index) {
-            case 0:
-            case 1:
-            case 2: return 0;
-            case 3:
-            case 4:
-            case 5: return 1;
-        }
-        return 2;
-    }
+    private Pair getPair(int index) {
+        int first = 0, second = 0; // forced initialization
 
-    /**
-     * Returns the y-coordinate that corresponds to the index.
-     * 
-     * @param index      the index of the JButton
-     * @return      the y-coordinate of the 2d array that corresponds to the [0-8] index.
-     */
-    private int getY(int index) {
         switch (index) {
-            case 0:
-            case 3:
-            case 6: return 0;
-            case 1:
-            case 4:
-            case 7: return 1;
+            case 0: first = 0; second = 0; break;
+            case 1: first = 0; second = 1; break;
+            case 2: first = 0; second = 2; break;
+            case 3: first = 1; second = 0; break;
+            case 4: first = 1; second = 1; break;
+            case 5: first = 1; second = 2; break;
+            case 6: first = 2; second = 0; break;
+            case 7: first = 2; second = 1; break;
+            case 8: first = 2; second = 2; break;
         }
-        return 2;
+
+        return Pair.create(first, second);
     }
 
     /**
