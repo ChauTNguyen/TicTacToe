@@ -58,10 +58,10 @@ public class Controller implements ActionListener {
             // into x- and y- coordinates.
             int indexOfViewButton = getJButtonIndex((JButton) e.getSource());
 
-            Pair pair = getPair(indexOfViewButton);
+            Pair coordinates = getPair(indexOfViewButton);
             game.setFieldOwner(game.getUserSymbol(),
-                               pair.first,
-                               pair.second);
+                               coordinates.first,
+                               coordinates.second);
 
             view.updateBoard(game.getUserSymbol(), (JButton) e.getSource());
         }
