@@ -58,7 +58,7 @@ public class Controller implements ActionListener {
             // into x- and y- coordinates.
             int indexOfViewButton = getJButtonIndex((JButton) e.getSource());
 
-            Pair coordinates = getPair(indexOfViewButton);
+            Pair coordinates = convertToCoordinates(indexOfViewButton);
             game.setFieldOwner(game.getUserSymbol(),
                                coordinates.first,
                                coordinates.second);
@@ -89,7 +89,7 @@ public class Controller implements ActionListener {
      * @param index     index of the view button.
      * @return          a pair containing the x and y coordinates.
      */
-    private Pair getPair(int index) {
+    private Pair convertToCoordinates(int index) {
         int first = 0, second = 0; // forced initialization
 
         switch (index) {
