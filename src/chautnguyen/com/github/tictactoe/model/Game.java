@@ -79,11 +79,7 @@ public class Game {
             }
         }
         
-        if (turnsCounter == 9) {
-            return true;
-        }
-        // if both of the above conditions don't apply, game is not over
-        return false;
+        if (turnsCounter == 9) return true; else return false;
     }
     
     /**
@@ -106,11 +102,7 @@ public class Game {
      * Sets the user symbol to a Symbol depending on whether the number of turns is even or odd.
      */
     public void setUserSymbol() {
-        if (turnsCounter % 2 == 1) {
-            userSymbol = Symbol.X;
-        } else {
-            userSymbol = Symbol.O;
-        }
+        if (turnsCounter % 2 == 1) userSymbol = Symbol.X; else userSymbol = Symbol.O;
     }
     
     /**
