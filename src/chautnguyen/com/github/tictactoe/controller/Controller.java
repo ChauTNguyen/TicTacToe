@@ -87,7 +87,7 @@ public class Controller implements ActionListener {
      * Returns a pair containing the x and y coordinates corresponding to the View buttons array [0-8 index].
      *
      * @param index     index of the view button.
-     * @return          a pair containing the x and y coordinates.
+     * @return          a Pair object containing the x and y coordinates.
      */
     private Pair convertToCoordinates(int index) {
         int first = 0, second = 0; // forced initialization

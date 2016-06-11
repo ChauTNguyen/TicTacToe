@@ -58,22 +58,13 @@ public class View extends JFrame implements ViewInterface {
      * @param button    the button that was clicked.
      */
     public void updateBoard(Symbol userSymbol, JButton button) {
-        if (userSymbol.toString() == "X") {
-            try {
-                Image icon = ImageIO.read(View.class.getResource("icons/X.png"));
-                button.setIcon(new ImageIcon(icon));
-            } catch (IOException ex) {
-                System.out.println("icons/X.png not found.");
-            }
-        } else {
-            try {
-                Image icon = ImageIO.read(View.class.getResource("icons/O.png"));
-                button.setIcon(new ImageIcon(icon));
-            } catch (IOException ex) {
-                System.out.println("icons/O.png not found.");
-            }
+        try {
+            Image icon = ImageIO.read(View.class.getResource("icons/" + userSymbol.toString() + ".png"));
+            button.setIcon(new ImageIcon(icon));
+            button.setEnabled(false);
+        } catch (IOException ex) {
+            System.out.println("icons/" + userSymbol.toString() + ".png not found.");
         }
-        button.setEnabled(false);
     }
 
     /**
